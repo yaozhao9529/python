@@ -1,0 +1,24 @@
+'''
+做为 Apple Store App 独立开发者，你要搞限时促销，为你的应用生成激活码（或者优惠券），使用 Python 如何生成 200 个激活码（或者优惠券）？
+'''
+
+import random
+import string
+
+
+def random_str(num, length):
+    f = open("Running_result.txt", 'wb')
+    chars = []
+    chars = string.digits + string.ascii_letters
+    for i in range(num):
+        s =[]
+        for j in range(length):
+            s.append(random.choice(chars))
+        #print(''.join(s))
+        s_bytes = bytes(''.join(s)+'\n', 'utf8')
+        f.write(s_bytes)
+    f.close()
+
+
+if __name__ =='__main__':
+    random_str(200, 4)
